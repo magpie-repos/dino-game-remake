@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckkakymx1026k"]
+
+[ext_resource type="Texture2D" uid="uid://bcqi06dp8x4l4" path="res://assets/textures/dino_up_walk.png" id="1_1q4ca"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mi2v"]
+size = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_2s2un"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DinoSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_a1aqp"]
+resource_name = "still"
+length = 0.250025
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DinoSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_f8gi4"]
+resource_name = "up_walk"
+length = 0.500025
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DinoSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ljx6r"]
+_data = {
+"RESET": SubResource("Animation_2s2un"),
+"still": SubResource("Animation_a1aqp"),
+"up_walk": SubResource("Animation_f8gi4")
+}
+
+[node name="Dino" type="Node2D"]
+
+[node name="DinoSprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_1q4ca")
+hframes = 3
+
+[node name="DinoArea2D" type="Area2D" parent="."]
+
+[node name="DinoCollisionShape" type="CollisionShape2D" parent="DinoArea2D"]
+shape = SubResource("RectangleShape2D_7mi2v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ljx6r")
+}

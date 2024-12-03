@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8aiiw3oj7nry"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_bdotx"]
+[ext_resource type="Script" path="res://scripts/obst_spawner.gd" id="2_3gmba"]
+[ext_resource type="Texture2D" uid="uid://bm8sf1naobqk6" path="res://assets/textures/background_base.png" id="2_kq5de"]
+[ext_resource type="PackedScene" uid="uid://ckkakymx1026k" path="res://assets/scenes/dino.tscn" id="2_vvw1i"]
+[ext_resource type="Script" path="res://scripts/dino.gd" id="3_dvhoj"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_bdotx")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_kq5de")
+centered = false
+
+[node name="ObstSpawner" type="Node2D" parent="."]
+script = ExtResource("2_3gmba")
+
+[node name="Dino" parent="." instance=ExtResource("2_vvw1i")]
+position = Vector2(60, 200)
+script = ExtResource("3_dvhoj")
