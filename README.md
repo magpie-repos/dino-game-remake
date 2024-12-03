@@ -10,7 +10,7 @@ Total Time: 4h 00m
 - [ ] Player Dino
 	- [x] Player Jump
 	- [ ] Player Duck
-		-[ ] Ducking Sprites
+		- [ ] Ducking Sprites
 	- [x] Base Sprites
 	- [ ] Dino Animations
 		- [x] Create Standing/Walking Animation
