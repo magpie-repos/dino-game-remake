@@ -45,7 +45,7 @@ familiarize myself with game dev and expand my understanding of the Godot engine
 
 ## Limitations - Time, Tools, and Target
 - **Purpose:** Learning: Sprite animation, difficulty scaling, pixel art, animation state management
-- **Time Limit:**20h
+- **Time Limit:** 20h
 - **Team:** Me
 - **Target Platform:** Web embed, windows exe
 - **Target Inputs:** kbr
