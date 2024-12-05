@@ -1,10 +1,9 @@
 # Dino Game Remake
 A remake of the classic chrome dino game in Godot with GDScript. This is a learning project to help
 familiarize myself with game dev and expand my understanding of the Godot engine.
-
-Created: 24-12-01
-Status: Dev
-Total Time: 6h 20m
+- Created: 24-12-01
+- Status: Dev
+- Total Time: 6h 20m
 ##TASKS
 - [x] Scope
 - [ ] Player Dino
@@ -45,15 +44,15 @@ Total Time: 6h 20m
 	- [ ] Tutorial Text (Startup UI)
 
 ## Limitations - Time, Tools, and Target
-**Purpose:** Learning: Sprite animation, difficulty scaling, pixel art, animation state management
-Time Limit:**20h
-**Team:** Me
-**Target Platform:** Web embed, windows exe
-**Target Inputs:** kbr
-**Tools Used:** Godot, Chiptone, GIMP, Pixelorama
+- **Purpose:** Learning: Sprite animation, difficulty scaling, pixel art, animation state management
+- **Time Limit:**20h
+- **Team:** Me
+- **Target Platform:** Web embed, windows exe
+- **Target Inputs:** kbr
+- **Tools Used:** Godot, Chiptone, GIMP, Pixelorama
 ## Art
-**Sound:** Blips and Boops
-**Visuals:** Super simplistic pixel art with emphasis on low res and readability
+- **Sound:** Blips and Boops
+- **Visuals:** Super simplistic pixel art with emphasis on low res and readability
 ## Mechanics
 - Obstacles scroll across the screen
 - Player can jump to clear ground obstacles and duck to avoid air obstacles
