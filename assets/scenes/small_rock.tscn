@@ -14,19 +14,21 @@ size = Vector2(16, 3.9375)
 [node name="SmallRock" type="Node2D" groups=["obstacle"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16.005, -16)
 scale = Vector2(4, 4)
 texture = ExtResource("1_iix7x")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+scale = Vector2(0.25, 0.25)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_f2aw4")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_i5tpc")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 position = Vector2(0, -1.96875)
 shape = SubResource("RectangleShape2D_54ar6")

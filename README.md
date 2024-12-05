@@ -4,18 +4,18 @@ familiarize myself with game dev and expand my understanding of the Godot engine
 
 Created: 24-12-01
 Status: Dev
-Total Time: 4h 00m
+Total Time: 6h 20m
 ##TASKS
 - [x] Scope
 - [ ] Player Dino
 	- [x] Player Jump
 	- [ ] Player Duck
-		-[ ] Ducking Sprites
+		-[x] Ducking Sprites
 	- [x] Base Sprites
-	- [ ] Dino Animations
+	- [x] Dino Animations
 		- [x] Create Standing/Walking Animation
-		- [ ] Create Ducking/Walking Animation
-		- [ ] State Manager for Dino Animation
+		- [x] Create Ducking/Walking Animation
+		- [x] State Manager for Dino Animation
 - [ ] Obstacles
 	- [x] Large Rock
 	- [x] Small Rock
@@ -38,6 +38,7 @@ Total Time: 4h 00m
 	- [ ] 100pts SFX
 	- [ ] Loss SFX
 - [ ] Score System
+	- [x] Save/Load High Score
 - [ ] UI
 	- [ ] Score Display
 	- [ ] Game Over UI
