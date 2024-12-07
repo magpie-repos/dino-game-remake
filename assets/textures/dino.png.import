@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gp3b3k2kqtvc"
-path="res://.godot/imported/dino_walk_duck.png-9a58ecee5ab1e2bd048c20ab0f64f2e3.ctex"
+uid="uid://ds0w8if1wr863"
+path="res://.godot/imported/dino.png-e7ced699eb5e9d26d3bc9ddce7fa7f90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/dino_walk_duck.png"
-dest_files=["res://.godot/imported/dino_walk_duck.png-9a58ecee5ab1e2bd048c20ab0f64f2e3.ctex"]
+source_file="res://assets/textures/dino.png"
+dest_files=["res://.godot/imported/dino.png-e7ced699eb5e9d26d3bc9ddce7fa7f90.ctex"]
 
 [params]
 

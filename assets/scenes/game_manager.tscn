@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8aiiw3oj7nry"]
+[gd_scene load_steps=6 format=3 uid="uid://b8aiiw3oj7nry"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_bdotx"]
 [ext_resource type="Script" path="res://scripts/obst_spawner.gd" id="2_3gmba"]
 [ext_resource type="Texture2D" uid="uid://bm8sf1naobqk6" path="res://assets/textures/background_base.png" id="2_kq5de"]
 [ext_resource type="PackedScene" uid="uid://ckkakymx1026k" path="res://assets/scenes/dino.tscn" id="2_vvw1i"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="5_r7ep1"]
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
@@ -20,7 +21,7 @@ script = ExtResource("2_3gmba")
 [node name="Dino" parent="." instance=ExtResource("2_vvw1i")]
 position = Vector2(60, 200)
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("score_ui", "go_ui", "tut_ui", "score_label", "hi_score_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +30,12 @@ offset_right = 600.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("5_r7ep1")
+score_ui = NodePath("UIScore")
+go_ui = NodePath("UIGameOver")
+tut_ui = NodePath("UITutorial")
+score_label = NodePath("UIScore/ScoreLabel")
+hi_score_label = NodePath("UIScore/HiScoreLabel")
 
 [node name="UIScore" type="Control" parent="UI"]
 layout_mode = 1

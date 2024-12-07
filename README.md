@@ -3,12 +3,12 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 familiarize myself with game dev and expand my understanding of the Godot engine.
 - Created: 24-12-01
 - Status: Dev
-- Total Time: 6h 20m
+- Total Time: 7h 55m
 ##TASKS
 - [x] Scope
-- [ ] Player Dino
+- [x] Player Dino
 	- [x] Player Jump
-	- [ ] Player Duck
+	- [x] Player Duck
 		-[x] Ducking Sprites
 	- [x] Base Sprites
 	- [x] Dino Animations

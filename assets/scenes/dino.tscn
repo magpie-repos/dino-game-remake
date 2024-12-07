@@ -1,15 +1,51 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckkakymx1026k"]
+[gd_scene load_steps=10 format=3 uid="uid://ckkakymx1026k"]
 
-[ext_resource type="Texture2D" uid="uid://bcqi06dp8x4l4" path="res://assets/textures/dino_up_walk.png" id="1_1q4ca"]
 [ext_resource type="Script" path="res://scripts/dino.gd" id="1_10gsw"]
-[ext_resource type="Texture2D" uid="uid://gp3b3k2kqtvc" path="res://assets/textures/dino_walk_duck.png" id="3_smxxg"]
+[ext_resource type="Texture2D" uid="uid://ds0w8if1wr863" path="res://assets/textures/dino.png" id="2_w4i81"]
+[ext_resource type="Texture2D" uid="uid://dtlyehhxr7l00" path="res://assets/textures/dino_legs.png" id="3_x5if2"]
 
-[sub_resource type="Animation" id="Animation_2s2un"]
+[sub_resource type="Animation" id="Animation_is2xc"]
+resource_name = "walk"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DinoLegs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_0qae1"]
+resource_name = "stand"
+length = 0.05
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DinoLegs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_eh057"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DinoSprite:frame")
+tracks/0/path = NodePath("DinoLegs:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,21 +57,20 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DinoSprite:texture")
+tracks/1/path = NodePath("DinoSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_1q4ca")]
+"values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_6dgbt"]
-resource_name = "duck_walk"
-length = 0.500025
-loop_mode = 1
-step = 0.25
+[sub_resource type="Animation" id="Animation_kd1us"]
+resource_name = "up"
+length = 0.05
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -43,28 +78,16 @@ tracks/0/path = NodePath("DinoSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DinoSprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_smxxg")]
+"values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_a1aqp"]
-resource_name = "still"
-length = 0.250025
-step = 0.25
+[sub_resource type="Animation" id="Animation_aiohq"]
+resource_name = "duck"
+length = 0.05
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -76,56 +99,15 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DinoSprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_1q4ca")]
-}
-
-[sub_resource type="Animation" id="Animation_f8gi4"]
-resource_name = "up_walk"
-length = 0.500025
-loop_mode = 1
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DinoSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DinoSprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_1q4ca")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ljx6r"]
 _data = {
-"RESET": SubResource("Animation_2s2un"),
-"duck_walk": SubResource("Animation_6dgbt"),
-"still": SubResource("Animation_a1aqp"),
-"up_walk": SubResource("Animation_f8gi4")
+"RESET": SubResource("Animation_eh057"),
+"duck": SubResource("Animation_aiohq"),
+"stand": SubResource("Animation_0qae1"),
+"up": SubResource("Animation_kd1us"),
+"walk": SubResource("Animation_is2xc")
 }
 
 [node name="Dino" type="Node2D"]
@@ -134,7 +116,12 @@ script = ExtResource("1_10gsw")
 
 [node name="DinoSprite" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("1_1q4ca")
+texture = ExtResource("2_w4i81")
+hframes = 2
+
+[node name="DinoLegs" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("3_x5if2")
 hframes = 3
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -146,26 +133,14 @@ polygon = PackedVector2Array(0, -4, 4, -4, 4, -8, 8, -8, 8, -20, 12, -20, 12, -2
 visible = false
 polygon = PackedVector2Array(-8, 0, 12, 0, 12, -4, 32, -4, 32, 12, 12, 12, 12, 16, 8, 16, 8, 24, -4, 24, -4, 20, -8, 20, -8, 16, -32, 16, -32, 12, -24, 12, -24, 8, -16, 8, -16, 4, -8, 4)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="LegAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ljx6r")
 }
 
-[node name="DeathParticle" type="CPUParticles2D" parent="."]
-visible = false
-emitting = false
-amount = 32
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-lifetime_randomness = 0.4
-direction = Vector2(0, -1)
-spread = 180.0
-gravity = Vector2(0, 180)
-initial_velocity_min = 80.0
-initial_velocity_max = 150.0
-scale_amount_min = 1.5
-scale_amount_max = 4.0
-color = Color(0.878431, 0.109804, 0.00392157, 1)
+[node name="BodyAnimaiton" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ljx6r")
+}
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -3,13 +3,16 @@ extends Node2D
 @export var jump_force: float = 20
 @export var gravity: float = 100
 @export var velocity: float = 0
-@export var floor: float = 196  ##NOTE -> 230 is floor, we add dino sprite size to comp for offset
+@export var floor: float = 196
 ##Refs
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var body_anim_player: AnimationPlayer = $BodyAnimaiton
+@onready var leg_anim_player: AnimationPlayer = $LegAnimation
 @onready var up_col_shape: CollisionPolygon2D = $Area2D/UpColShape
 @onready var duck_col_shape: CollisionPolygon2D = $Area2D/DuckColShape
-@onready var sprite: Sprite2D = $DinoSprite
-@onready var death_part: CPUParticles2D = $DeathParticle
+@onready var body_sprite: Sprite2D = $DinoSprite
+@onready var leg_sprite: Sprite2D = $DinoLegs
+@onready var death_part_scene: PackedScene = preload("res://assets/scenes/death_particle.tscn")
+var death_part: CPUParticles2D
 
 ##State vars
 var ducking: bool = false
@@ -47,16 +50,17 @@ func _process(delta: float) -> void:
 
 func manage_animation_state() -> void:
 	if !game_start:
-		anim_player.play("still")
+		leg_anim_player.play("stand")
 	else:
+		leg_anim_player.play("walk")
 		if is_grounded():
-			if !ducking && anim_player.current_animation != "up_walk":
-				anim_player.play("up_walk")
-			elif ducking && anim_player.current_animation != "duck_walk":
-				anim_player.play("duck_walk")
+			if !ducking && body_anim_player.current_animation != "up":
+				body_anim_player.play("up")
+			elif ducking && body_anim_player.current_animation != "duck":
+				body_anim_player.play("duck")
 		else: ##if not grounded
-			if anim_player.current_animation != "still":
-				anim_player.play("still")
+			if leg_anim_player.current_animation != "stand":
+				leg_anim_player.play("stand")
 
 func is_grounded() -> bool:
 	if position.y >= floor:
@@ -66,11 +70,17 @@ func is_grounded() -> bool:
 
 func reset_dino() -> void:
 	game_start = false	
-	sprite.show()
-	death_part.hide()
+	body_sprite.show()
+	leg_sprite.show()
+	
+	if death_part:
+		print("in reset dino")
+		death_part.queue_free()
+	
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	sprite.hide()
-	death_part.show()
-	death_part.emitting = true
+	body_sprite.hide()
+	leg_sprite.hide()
+	death_part = death_part_scene.instantiate()
+	add_child(death_part)
 	ded.emit()
