@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8aiiw3oj7nry"]
+[gd_scene load_steps=7 format=3 uid="uid://b8aiiw3oj7nry"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_bdotx"]
 [ext_resource type="Script" path="res://scripts/obst_spawner.gd" id="2_3gmba"]
 [ext_resource type="Texture2D" uid="uid://bm8sf1naobqk6" path="res://assets/textures/background_base.png" id="2_kq5de"]
 [ext_resource type="PackedScene" uid="uid://ckkakymx1026k" path="res://assets/scenes/dino.tscn" id="2_vvw1i"]
+[ext_resource type="Script" path="res://scripts/bd_scroller.gd" id="3_xdxdc"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="5_r7ep1"]
 
 [node name="GameManager" type="Node2D"]
@@ -11,8 +12,10 @@ process_mode = 3
 script = ExtResource("1_bdotx")
 
 [node name="Background" type="Sprite2D" parent="."]
+process_mode = 1
 texture = ExtResource("2_kq5de")
 centered = false
+script = ExtResource("3_xdxdc")
 
 [node name="ObstSpawner" type="Node2D" parent="."]
 process_mode = 1

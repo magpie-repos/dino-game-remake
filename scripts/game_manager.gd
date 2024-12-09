@@ -1,13 +1,14 @@
 extends Node2D
 class_name GameManager
 
-var game_speed: float =  1
 var game_over: bool = false
 var game_start: bool = false
 var score: int
 var hi_score: int
-var speed_increment: int = 15
-var score_increment: float = 50;
+var game_speed: float =  1
+var speed_multiplier: float = 0.10
+var score_increment: float = 0.10
+var score_time_cntr: float
 
 @onready var dino_node: Node2D = $Dino
 @onready var obst_spawner: Node2D = $ObstSpawner
@@ -15,6 +16,8 @@ var score_increment: float = 50;
 
 func _ready() -> void:
 	reset_game()
+	ui.update_score(score)
+	ui.update_hi_score(hi_score)
 
 func _process(delta: float) -> void:
 	if Input.is_anything_pressed() && !game_start:
@@ -24,14 +27,22 @@ func _process(delta: float) -> void:
 	if game_over && Input.is_action_just_pressed("reset"):
 		reset_game()
 	
-	if game_start:
-		score += score_increment * delta
+	if game_start && !game_over:
+		
+		score_time_cntr += delta
+		if score_time_cntr >= score_increment:
+			score += 1 
+			score_time_cntr = 0
+			
 		ui.update_score(score)
 		if score > hi_score:
 			hi_score = score
 			ui.update_hi_score(snapped(hi_score, 1))
 			
-			
+		game_speed = (snapped(score / 100, 1) * speed_multiplier) + 1
+		
+		if game_speed >= 10:
+			game_speed = 10
 	
 
 func start_game() -> void:

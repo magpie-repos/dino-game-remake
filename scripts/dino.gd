@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var jump_force: float = 20
-@export var gravity: float = 100
+@export var jump_force: float = 500
+@export var gravity: float = 1500
 @export var velocity: float = 0
 @export var floor: float = 196
 ##Refs
@@ -25,42 +25,38 @@ func _process(delta: float) -> void:
 	
 	manage_animation_state()
 	
-	##Jump logic
-	if is_grounded():
-		if Input.is_action_just_pressed("jump"):
-			velocity -= jump_force
-		else:
-			velocity = 0
-			position.y = floor
-	else:
-		ducking = false
+	##Jump Logic 2: The Seagull
+	if is_grounded() && Input.is_action_just_pressed("jump"):
+		velocity -= jump_force
+	if !is_grounded():
 		velocity += gravity * delta
-	position.y += velocity
+	if position.y > floor:
+		velocity = 0
+		position.y = floor
+	position.y += velocity * delta
 
-	##Duck Logic
-	if Input.is_action_pressed("duck"):
-		if ducking == false && is_grounded():
+	
+	##Duck Logi
+	if Input.is_action_pressed("duck") && is_grounded():
 			ducking = true
-			up_col_shape.show()
-			duck_col_shape.hide()
 	else:
 		ducking = false
-		duck_col_shape.show()
-		up_col_shape.hide()
 
 func manage_animation_state() -> void:
-	if !game_start:
+	if !is_grounded() || !game_start:
 		leg_anim_player.play("stand")
-	else:
+	elif leg_anim_player.current_animation != "walk":
 		leg_anim_player.play("walk")
-		if is_grounded():
-			if !ducking && body_anim_player.current_animation != "up":
-				body_anim_player.play("up")
-			elif ducking && body_anim_player.current_animation != "duck":
-				body_anim_player.play("duck")
-		else: ##if not grounded
-			if leg_anim_player.current_animation != "stand":
-				leg_anim_player.play("stand")
+		
+	##Body Animation
+	if ducking && body_anim_player.current_animation != "duck":
+		body_anim_player.play("duck")
+		up_col_shape.hide()
+		duck_col_shape.show()
+	elif !ducking && body_anim_player.current_animation != "up":
+		body_anim_player.play("up")
+		up_col_shape.show()
+		duck_col_shape.hide()
 
 func is_grounded() -> bool:
 	if position.y >= floor:
@@ -74,7 +70,6 @@ func reset_dino() -> void:
 	leg_sprite.show()
 	
 	if death_part:
-		print("in reset dino")
 		death_part.queue_free()
 	
 

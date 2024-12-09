@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cksfjikodbf82"]
+
+[ext_resource type="Texture2D" uid="uid://chwyn0dbapfu" path="res://assets/textures/far_mount.png" id="1_voqyp"]
+
+[node name="FarMount3" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_voqyp")
+offset = Vector2(0, -32)
+hframes = 3
+frame = 2

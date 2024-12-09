@@ -3,7 +3,7 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 familiarize myself with game dev and expand my understanding of the Godot engine.
 - Created: 24-12-01
 - Status: Dev
-- Total Time: 7h 55m
+- Total Time: 10h 25m
 ##TASKS
 - [x] Scope
 - [x] Player Dino
@@ -23,23 +23,23 @@ familiarize myself with game dev and expand my understanding of the Godot engine
 		- [ ] Base Sprite
 		- [ ] Animations
 - [ ] Background 
-  - [ ] Base Background Sprite
+  - [x] Base Background Sprite
   - [ ] Parallax Effects
-	- [ ] Far Mountain Sprites
-	- [ ] Medium Mountain Sprites
+	- [x] Far Mountain Sprites
+	- [x] Medium Mountain Sprites
 	- [ ] Cloud Sprites
 		- [ ] Medium Cloud
 		- [ ] Far Cloud
-	- [ ] Ground Scuffs
-	- [ ] Paralax Scroll Script
+	- [~] Ground Scuffs
+	- [~] Paralax Scroll Script
 - [ ] Sounds
 	- [ ] Jump SFX
 	- [ ] 100pts SFX
 	- [ ] Loss SFX
-- [ ] Score System
+- [~] Score System
 	- [x] Save/Load High Score
 - [ ] UI
-	- [ ] Score Display
+	- [~] Score Display
 	- [ ] Game Over UI
 	- [ ] Tutorial Text (Startup UI)
 

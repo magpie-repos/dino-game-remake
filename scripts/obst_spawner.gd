@@ -1,11 +1,10 @@
 extends Node2D
 
-var base_obst_speed: float = 300
+var base_obst_speed: float = 400
 var obst_array: Array[Node2D]
 var obst_cap: int = 1
 var safe_spawn_margin: float = 15
 var floor: float = 228
-
 var spawning_active: bool = false
 
 @onready var window_size: Vector2 = get_window().size
