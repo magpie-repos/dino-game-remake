@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8aiiw3oj7nry"]
+[gd_scene load_steps=10 format=3 uid="uid://b8aiiw3oj7nry"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_bdotx"]
 [ext_resource type="Script" path="res://scripts/obst_spawner.gd" id="2_3gmba"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ckkakymx1026k" path="res://assets/scenes/dino.tscn" id="2_vvw1i"]
 [ext_resource type="Script" path="res://scripts/bd_scroller.gd" id="3_xdxdc"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="5_r7ep1"]
+[ext_resource type="AudioStream" uid="uid://c65lnxhentgxr" path="res://assets/sfx/death_sfx.wav" id="7_enc1o"]
+[ext_resource type="SystemFont" uid="uid://b8b7b2tsg8ls" path="res://assets/font.tres" id="7_yy5q7"]
+[ext_resource type="AudioStream" uid="uid://blb7228lh6phq" path="res://assets/sfx/score_up_sfx.wav" id="8_vqtyl"]
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
@@ -22,9 +25,9 @@ process_mode = 1
 script = ExtResource("2_3gmba")
 
 [node name="Dino" parent="." instance=ExtResource("2_vvw1i")]
-position = Vector2(60, 200)
+position = Vector2(60, 196)
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("score_ui", "go_ui", "tut_ui", "score_label", "hi_score_label")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("score_ui", "go_ui", "tut_ui", "score_label", "hi_score_label", "ui_game_over", "ui_tutorial")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,8 +40,10 @@ script = ExtResource("5_r7ep1")
 score_ui = NodePath("UIScore")
 go_ui = NodePath("UIGameOver")
 tut_ui = NodePath("UITutorial")
-score_label = NodePath("UIScore/ScoreLabel")
-hi_score_label = NodePath("UIScore/HiScoreLabel")
+score_label = NodePath("UIScore/MarginContainer/VBoxContainer/ScoreLabel")
+hi_score_label = NodePath("UIScore/MarginContainer/VBoxContainer/HiScoreLabel")
+ui_game_over = NodePath("UIGameOver")
+ui_tutorial = NodePath("UITutorial")
 
 [node name="UIScore" type="Control" parent="UI"]
 layout_mode = 1
@@ -48,19 +53,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScoreLabel" type="Label" parent="UI/UIScore"]
-layout_mode = 0
-offset_top = 18.82
-offset_right = 52.0
-offset_bottom = 41.82
-text = "#####"
+[node name="MarginContainer" type="MarginContainer" parent="UI/UIScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="HiScoreLabel" type="Label" parent="UI/UIScore"]
-layout_mode = 0
-offset_top = -1.0
-offset_right = 40.0
-offset_bottom = 22.0
-text = "HI: ####"
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UIScore/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="HiScoreLabel" type="Label" parent="UI/UIScore/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_yy5q7")
+theme_override_font_sizes/font_size = 24
+text = "hi: #####"
+horizontal_alignment = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/UIScore/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_yy5q7")
+theme_override_font_sizes/font_size = 24
+text = "#####"
+horizontal_alignment = 2
 
 [node name="UIGameOver" type="Control" parent="UI"]
 visible = false
@@ -71,26 +98,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameOverLabel" type="Label" parent="UI/UIGameOver"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.5
-offset_top = -11.5
-offset_right = 100.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "GAMAMAEMA OGOBVOER
-"
+[node name="VSplitContainer" type="VSplitContainer" parent="UI/UIGameOver"]
+layout_mode = 2
+offset_left = 135.0
+offset_top = 54.925
+offset_right = 465.0
+offset_bottom = 143.925
+theme_override_constants/separation = -35
+
+[node name="GameOverLabel" type="Label" parent="UI/UIGameOver/VSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_yy5q7")
+theme_override_font_sizes/font_size = 50
+text = "Game Over :("
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartTextLabel" type="Label" parent="UI/UIGameOver/VSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_yy5q7")
+theme_override_font_sizes/font_size = 20
+text = "press 'r' to restart"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UITutorial" type="Control" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,5 +136,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/UITutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UITutorial/CenterContainer"]
+layout_mode = 2
+
+[node name="StartTextLabel" type="Label" parent="UI/UITutorial/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_yy5q7")
+theme_override_font_sizes/font_size = 38
+text = "press 'up' to jump"
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_enc1o")
+
+[node name="ScoreUpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_vqtyl")
+volume_db = -10.0
 
 [connection signal="ded" from="Dino" to="." method="_on_dino_ded"]

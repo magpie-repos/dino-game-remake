@@ -1,9 +1,9 @@
 # Dino Game Remake
-A remake of the classic chrome dino game in Godot with GDScript. This is a learning project to help
-familiarize myself with game dev and expand my understanding of the Godot engine.
+A remake of the classic chrome dino game in Godot with GDScript. This is a learning project to help familiarize myself with game dev and expand my understanding of the Godot engine.
+
 - Created: 24-12-01
 - Status: Dev
-- Total Time: 11h 40m
+- Total Time: 13h 35m
 ##TASKS
 - [x] Scope
 - [x] Player Dino
@@ -19,30 +19,33 @@ familiarize myself with game dev and expand my understanding of the Godot engine
 	- [x] Large Rock
 	- [x] Small Rock
 	- [x] Tall Cactus
+	- [ ] Difficulty Scaling
 	- [ ] Pteradactyl
 		- [ ] Base Sprite
 		- [ ] Animations
-- [ ] Background 
+	- [ ] (OP) Snake Enemy
+- [x] Background 
   - [x] Base Background Sprite
-  - [ ] Parallax Effects
+  - [x] Parallax Effects
 	- [x] Far Mountain Sprites
 	- [x] Medium Mountain Sprites
-	- [ ] Cloud Sprites
-		- [ ] Medium Cloud
-		- [ ] Far Cloud
+	- [x] Cloud Sprites
+		- [ ] ~~Medium Cloud~~
+		- [x] Far Cloud
 	- [x] Ground Scuffs
-	- [~] Paralax Scroll Script
-		- [ ] Add portions for handling clouds
-- [ ] Sounds
-	- [ ] Jump SFX
-	- [ ] 100pts SFX
-	- [ ] Loss SFX
-- [~] Score System
+	- [x] Paralax Scroll Script
+		- [x] Add portions for handling clouds
+- [x] Sounds
+	- [x] Jump SFX
+	- [x] Land SFX
+	- [x] 100pts SFX
+	- [x] Loss SFX
+- [x] Score System
 	- [x] Save/Load High Score
-- [ ] UI
-	- [~] Score Display
-	- [ ] Game Over UI
-	- [ ] Tutorial Text (Startup UI)
+- [x] UI
+	- [x] Score Display
+	- [x] Game Over UI
+	- [x] Tutorial Text (Startup UI)
 
 ## Limitations - Time, Tools, and Target
 - **Purpose:** Learning: Sprite animation, difficulty scaling, pixel art, animation state management

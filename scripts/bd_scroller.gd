@@ -1,6 +1,8 @@
 extends Sprite2D
 var far_scroll_speed: float = 0.1
+var far_cloud_scroll_speed: float = 0.05
 var med_scroll_speed: float = 0.3
+var med_cloud_scroll_speed: float = 0.25
 
 var horizon_line: int = 216
 var obst_scroll_speed: int
@@ -24,25 +26,46 @@ var g_scuff_scenes: Array[PackedScene] = [
 	preload("res://assets/scenes/ground_scuff_5.tscn")
 ]
 
+var far_cloud_scenes: Array[PackedScene] = [
+	preload("res://assets/scenes/far_cloud_1.tscn"),
+	preload("res://assets/scenes/far_cloud_2.tscn"),
+	preload("res://assets/scenes/far_cloud_3.tscn")
+]
+var near_cloud_scenes: Array[PackedScene] = []
+
 var far_array: Array[Sprite2D]
 var med_array: Array[Sprite2D]
 var near_array: Array[Sprite2D]
 
-var num_far_mount: int = 6
+var far_cloud_array: Array[Sprite2D]
+var med_cloud_array: Array[Sprite2D]
+
+var num_far_mount: int = 16
 var num_med_rock: int = 5
 var num_g_scuff: int = 3
-var num_far_cloud: int = 2
+var num_far_cloud: int = 5
 var num_med_cloud: int = 1
 
 @onready var gm: GameManager = get_parent()
+@onready var win_size: Vector2 = get_window().size
 
 func _ready() -> void:
+	##Far Cloud Setup
+	for i in range(0, num_far_cloud):
+		var new_cloud: Sprite2D = far_cloud_scenes.pick_random().instantiate()
+		new_cloud.position.y = horizon_line - 100
+		new_cloud.position.x = randf_range(0.6, 1.4) * (((win_size.x + 128) / num_far_cloud * i) - 64)
+		new_cloud.scale *= randf_range(0.9, 1.1)
+		if randf() > 0.5:
+			new_cloud.flip_h = true
+		add_child(new_cloud)
+		far_cloud_array.append(new_cloud)
 	
 	##Far Mount Seup
 	for i in range(0, num_far_mount):
 		var new_mount: Sprite2D = far_mount_scenes.pick_random().instantiate()
 		new_mount.position.y = horizon_line 
-		new_mount.position.x = randi_range(0, get_window().size.x)
+		new_mount.position.x = ((win_size.x + 128) / num_far_mount * i) - 64
 		new_mount.scale *= randf_range(0.9, 1.1)
 		if randf() > 0.5:
 			new_mount.flip_h = true
@@ -58,6 +81,8 @@ func _ready() -> void:
 			new_rock.flip_h = true
 		add_child(new_rock)
 		med_array.append(new_rock)
+
+'''
 	##Ground Scuff Setup
 	for i in range(0, num_g_scuff):
 		var new_scuff: Sprite2D = g_scuff_scenes.pick_random().instantiate()
@@ -68,8 +93,16 @@ func _ready() -> void:
 			new_scuff.flip_h = true
 		add_child(new_scuff)
 		near_array.append(new_scuff)
+'''
 	
 func _process(delta: float) -> void:
+
+		##Far Cloud Stuff
+		for c in range(0, far_cloud_array.size()):
+			far_cloud_array[c].position.x -= gm.game_speed * gm.global_base_speed * far_cloud_scroll_speed * delta
+			
+			if far_cloud_array[c].position.x <= 0 - 64:
+				far_cloud_array[c].position.x = get_window().size.x + 64 + (randf() * 64)
 		
 		##Far Object Stuff
 		for f in range(0, far_array.size()):
@@ -84,10 +117,11 @@ func _process(delta: float) -> void:
 			
 			if med_array[m].position.x <= 0 - 64:
 				med_array[m].position.x = get_window().size.x + 64 + (randf() * 64)
-
+'''
 		##Near Object Stuff
 		for n in range(0, near_array.size()):
 			near_array[n].position.x -= gm.game_speed * gm.global_base_speed * delta
 			
 			if near_array[n].position.x <= 0 - 64:
 				near_array[n].position.x = get_window().size.x + 64 + (randf() * 64)
+'''

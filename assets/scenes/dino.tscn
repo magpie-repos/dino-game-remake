@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckkakymx1026k"]
+[gd_scene load_steps=12 format=3 uid="uid://ckkakymx1026k"]
 
 [ext_resource type="Script" path="res://scripts/dino.gd" id="1_10gsw"]
 [ext_resource type="Texture2D" uid="uid://ds0w8if1wr863" path="res://assets/textures/dino.png" id="2_w4i81"]
 [ext_resource type="Texture2D" uid="uid://dtlyehhxr7l00" path="res://assets/textures/dino_legs.png" id="3_x5if2"]
+[ext_resource type="AudioStream" uid="uid://cre4to12x1xj3" path="res://assets/sfx/jump_sfx.wav" id="4_cayw8"]
+[ext_resource type="AudioStream" uid="uid://cxbf5526kfgy2" path="res://assets/sfx/land_sfx.wav" id="5_br2x8"]
 
 [sub_resource type="Animation" id="Animation_eh057"]
 length = 0.001
@@ -143,5 +145,11 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_ljx6r")
 }
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cayw8")
+
+[node name="LandSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_br2x8")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

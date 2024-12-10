@@ -14,35 +14,40 @@ extends Node2D
 @onready var death_part_scene: PackedScene = preload("res://assets/scenes/death_particle.tscn")
 var death_part: CPUParticles2D
 
+@onready var land_sfx: AudioStreamPlayer = $LandSFX
+@onready var jump_sfx: AudioStreamPlayer = $JumpSFX
+
 ##State vars
 var ducking: bool = false
 var game_start: bool = false
+var game_over: bool = false
 
 ##Signals
 signal ded
 
 func _process(delta: float) -> void:
-	
-	manage_animation_state()
-	
-	##Jump Logic 2: The Seagull
-	if is_grounded() && Input.is_action_just_pressed("jump"):
-		velocity -= jump_force
-	if !is_grounded():
-		velocity += gravity * delta
-		
-	if position.y + velocity * delta > floor:
-		velocity = 0
-		position.y = floor
-	else:
-		position.y += velocity * delta
+	if !game_over:
+		manage_animation_state()
+		##Jump Logic 2: The Seagull
+		if is_grounded() && Input.is_action_just_pressed("jump"):
+			velocity -= jump_force
+			jump_sfx.play()
+		if !is_grounded():
+			velocity += gravity * delta
+			
+		if position.y + velocity * delta > floor:
+			velocity = 0
+			position.y = floor
+			land_sfx.play()
+		else:
+			position.y += velocity * delta
 
-	
-	##Duck Logi
-	if Input.is_action_pressed("duck") && is_grounded():
-			ducking = true
-	else:
-		ducking = false
+		
+		##Duck Logic
+		if Input.is_action_pressed("duck") && is_grounded():
+				ducking = true
+		else:
+			ducking = false
 
 func manage_animation_state() -> void:
 	if !is_grounded() || !game_start:
@@ -67,7 +72,8 @@ func is_grounded() -> bool:
 		return false
 
 func reset_dino() -> void:
-	game_start = false	
+	game_start = false
+	game_over = false
 	body_sprite.show()
 	leg_sprite.show()
 	
@@ -76,6 +82,7 @@ func reset_dino() -> void:
 	
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	game_over = true
 	body_sprite.hide()
 	leg_sprite.hide()
 	death_part = death_part_scene.instantiate()

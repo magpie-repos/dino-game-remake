@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjatfnfjgmt3x"]
+
+[ext_resource type="Texture2D" uid="uid://cq505n7qrcvbo" path="res://assets/textures/far_clouds.png" id="1_dila6"]
+
+[node name="FarCloud2" type="Sprite2D"]
+texture = ExtResource("1_dila6")
+hframes = 3
+frame = 1
