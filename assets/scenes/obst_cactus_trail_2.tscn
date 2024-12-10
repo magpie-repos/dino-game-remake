@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://8lrtufs23s2"]
+
+[ext_resource type="PackedScene" uid="uid://du28hlk76dh2g" path="res://assets/scenes/tall_cactus.tscn" id="1_yqbp6"]
+
+[node name="ObstCactusTrail2" type="Node2D"]
+
+[node name="TallCactus" parent="." instance=ExtResource("1_yqbp6")]
+position = Vector2(4, -24)
+scale = Vector2(0.75, 0.75)
+
+[node name="TallCactus2" parent="." instance=ExtResource("1_yqbp6")]
+position = Vector2(60, -24)
+scale = Vector2(0.75, 0.75)
+
+[node name="TallCactus3" parent="." instance=ExtResource("1_yqbp6")]
+position = Vector2(-24, -32)
+
+[node name="TallCactus4" parent="." instance=ExtResource("1_yqbp6")]
+position = Vector2(32, -32)

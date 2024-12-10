@@ -3,7 +3,7 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 familiarize myself with game dev and expand my understanding of the Godot engine.
 - Created: 24-12-01
 - Status: Dev
-- Total Time: 10h 25m
+- Total Time: 11h 40m
 ##TASKS
 - [x] Scope
 - [x] Player Dino
@@ -30,8 +30,9 @@ familiarize myself with game dev and expand my understanding of the Godot engine
 	- [ ] Cloud Sprites
 		- [ ] Medium Cloud
 		- [ ] Far Cloud
-	- [~] Ground Scuffs
+	- [x] Ground Scuffs
 	- [~] Paralax Scroll Script
+		- [ ] Add portions for handling clouds
 - [ ] Sounds
 	- [ ] Jump SFX
 	- [ ] 100pts SFX

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp0qgij5jguwj"]
+
+[ext_resource type="Texture2D" uid="uid://bt8acode8ca8t" path="res://assets/textures/ground_scuffs.png" id="1_so4bp"]
+
+[node name="GroundScuff3" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_so4bp")
+hframes = 5
+frame = 2

@@ -30,10 +30,12 @@ func _process(delta: float) -> void:
 		velocity -= jump_force
 	if !is_grounded():
 		velocity += gravity * delta
-	if position.y > floor:
+		
+	if position.y + velocity * delta > floor:
 		velocity = 0
 		position.y = floor
-	position.y += velocity * delta
+	else:
+		position.y += velocity * delta
 
 	
 	##Duck Logi

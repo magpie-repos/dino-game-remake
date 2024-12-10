@@ -5,7 +5,8 @@ var game_over: bool = false
 var game_start: bool = false
 var score: int
 var hi_score: int
-var game_speed: float =  1
+var game_speed: float =  0
+var global_base_speed: float = 400
 var speed_multiplier: float = 0.10
 var score_increment: float = 0.10
 var score_time_cntr: float
@@ -38,14 +39,14 @@ func _process(delta: float) -> void:
 		if score > hi_score:
 			hi_score = score
 			ui.update_hi_score(snapped(hi_score, 1))
-			
-		game_speed = (snapped(score / 100, 1) * speed_multiplier) + 1
 		
-		if game_speed >= 10:
+		if game_speed < 10:
+			game_speed = score / 100 * speed_multiplier + 1
+		else:
 			game_speed = 10
-	
 
 func start_game() -> void:
+	game_speed = 1
 	dino_node.game_start = true
 	obst_spawner.spawning_active = true
 
