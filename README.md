@@ -9,7 +9,7 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 - [x] Player Dino
 	- [x] Player Jump
 	- [x] Player Duck
-		-[x] Ducking Sprites
+ 		- [x] Ducking Sprites
 	- [x] Base Sprites
 	- [x] Dino Animations
 		- [x] Create Standing/Walking Animation
