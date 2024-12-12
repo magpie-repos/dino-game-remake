@@ -16,6 +16,7 @@ var death_part: CPUParticles2D
 
 @onready var land_sfx: AudioStreamPlayer = $LandSFX
 @onready var jump_sfx: AudioStreamPlayer = $JumpSFX
+@onready var gm: GameManager = get_parent()
 
 ##State vars
 var ducking: bool = false
@@ -33,19 +34,19 @@ func _process(delta: float) -> void:
 			velocity -= jump_force
 			jump_sfx.play()
 		if !is_grounded():
-			velocity += gravity * delta
+			velocity += gravity * delta * gm.game_speed
 			
-		if position.y + velocity * delta > floor:
+		if position.y + velocity * delta * gm.game_speed > floor:
 			velocity = 0
 			position.y = floor
 			land_sfx.play()
 		else:
-			position.y += velocity * delta
+			position.y += velocity * delta * gm.game_speed
 
 		
 		##Duck Logic
 		if Input.is_action_pressed("duck") && is_grounded():
-				ducking = true
+			ducking = true
 		else:
 			ducking = false
 

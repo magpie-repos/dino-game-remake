@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvw3odnc4iuda"]
+
+[ext_resource type="PackedScene" uid="uid://b3lvybhnt2rn4" path="res://assets/scenes/large_rock.tscn" id="1_juxja"]
+[ext_resource type="PackedScene" uid="uid://gfxrsq84ehl2" path="res://assets/scenes/small_rock.tscn" id="2_wuysg"]
+
+[node name="RockStackTall" type="Node2D"]
+
+[node name="LargeRock" parent="." instance=ExtResource("1_juxja")]
+
+[node name="SmallRock" parent="." instance=ExtResource("2_wuysg")]
+position = Vector2(23, -48)
+
+[node name="SmallRock3" parent="." instance=ExtResource("2_wuysg")]
+position = Vector2(-36, 0)

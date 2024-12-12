@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4hu6khga7wbb"]
+
+[ext_resource type="PackedScene" uid="uid://qsen2bbihijs" path="res://assets/scenes/obst_tall_cact.tscn" id="1_qbaat"]
+[ext_resource type="PackedScene" uid="uid://du28hlk76dh2g" path="res://assets/scenes/tall_cactus.tscn" id="2_lhl8u"]
+
+[node name="CactusPair" type="Node2D"]
+
+[node name="ObstTallCact" parent="." instance=ExtResource("1_qbaat")]
+
+[node name="TallCactus" parent="." instance=ExtResource("2_lhl8u")]
+position = Vector2(-38, -24)
+scale = Vector2(0.75, 0.75)

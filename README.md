@@ -19,11 +19,13 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 	- [x] Large Rock
 	- [x] Small Rock
 	- [x] Tall Cactus
-	- [ ] Difficulty Scaling
+	- [~] Difficulty Scaling + Random
+		- [ ] Dist scales w/ score too
 	- [ ] Pteradactyl
 		- [ ] Base Sprite
 		- [ ] Animations
 	- [ ] (OP) Snake Enemy
+	- [ ] Additional Obst
 - [x] Background 
   - [x] Base Background Sprite
   - [x] Parallax Effects
