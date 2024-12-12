@@ -59,12 +59,12 @@ func manage_animation_state() -> void:
 	##Body Animation
 	if ducking && body_anim_player.current_animation != "duck":
 		body_anim_player.play("duck")
-		up_col_shape.hide()
-		duck_col_shape.show()
+		up_col_shape.disabled = true
+		duck_col_shape.disabled = false
 	elif !ducking && body_anim_player.current_animation != "up":
 		body_anim_player.play("up")
-		up_col_shape.show()
-		duck_col_shape.hide()
+		up_col_shape.disabled = false
+		duck_col_shape.disabled = true
 
 func is_grounded() -> bool:
 	if position.y >= floor:

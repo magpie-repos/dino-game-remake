@@ -70,7 +70,7 @@ func reset_game() -> void:
 	obst_spawner.clear_obstacles()
 	get_tree().paused = false
 	dino_node.reset_dino()
-	score = 0
+	score = 500
 	hi_score = load_score()
 	ui.hide_game_over()
 

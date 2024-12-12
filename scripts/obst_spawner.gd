@@ -18,6 +18,7 @@ var diff_scale: int
 	preload("res://assets/scenes/rock_stack_tall.tscn"),
 	preload("res://assets/scenes/obst_cactus_trail_2.tscn")
 ]
+@onready var pt_scene: PackedScene = preload("res://assets/scenes/pt.tscn")
 
 func _process(delta: float) -> void:
 	diff_scale = 1 + game_manager.score / 100
@@ -34,12 +35,18 @@ func _process(delta: float) -> void:
 			obst_array.pop_at(i)
 
 func add_obst() -> void:
-	var new_obst: Node2D = obst_scene_array[randi_range(0, diff_scale)].instantiate()
-	new_obst.position.x = window_size.x + safe_spawn_margin + (randf() * 64)
-	new_obst.position.y = floor
-	add_child(new_obst)
-	
-	obst_array.append(new_obst)
+	if diff_scale >= 5 && randf() < 1 / float(diff_scale):
+		var new_obst: Node2D = pt_scene.instantiate()
+		new_obst.position.x = window_size.x + safe_spawn_margin + (randf() * 64)
+		new_obst.position.y = floor - randi_range(1, 8) * 16
+		add_child(new_obst)		
+		obst_array.append(new_obst)
+	else:
+		var new_obst: Node2D = obst_scene_array[randi_range(0, diff_scale)].instantiate()
+		new_obst.position.x = window_size.x + safe_spawn_margin + (randf() * 64)
+		new_obst.position.y = floor
+		add_child(new_obst)
+		obst_array.append(new_obst)
 
 func clear_obstacles() -> void:
 	for i in range(0, obst_array.size()):

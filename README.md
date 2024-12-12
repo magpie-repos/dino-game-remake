@@ -3,7 +3,7 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 
 - Created: 24-12-01
 - Status: Dev
-- Total Time: 13h 35m
+- Total Time: 15h 15m
 ##TASKS
 - [x] Scope
 - [x] Player Dino
@@ -21,11 +21,11 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 	- [x] Tall Cactus
 	- [~] Difficulty Scaling + Random
 		- [ ] Dist scales w/ score too
-	- [ ] Pteradactyl
-		- [ ] Base Sprite
-		- [ ] Animations
+	- [x] Pteradactyl
+		- [x] Base Sprite
+		- [x] Animations
 	- [ ] (OP) Snake Enemy
-	- [ ] Additional Obst
+	- [x] Additional Obst
 - [x] Background 
   - [x] Base Background Sprite
   - [x] Parallax Effects
