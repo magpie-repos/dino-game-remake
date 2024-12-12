@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://chwyn0dbapfu" path="res://assets/textures/far_mount.png" id="1_voqyp"]
 
 [node name="FarMount3" type="Sprite2D"]
+z_index = -50
+z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("1_voqyp")
 offset = Vector2(0, -32)

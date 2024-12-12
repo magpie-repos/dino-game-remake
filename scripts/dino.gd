@@ -78,6 +78,9 @@ func reset_dino() -> void:
 	body_sprite.show()
 	leg_sprite.show()
 	
+	position.y = floor
+	velocity = 0
+	
 	if death_part:
 		death_part.queue_free()
 	

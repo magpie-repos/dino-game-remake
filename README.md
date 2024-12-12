@@ -2,10 +2,17 @@
 A remake of the classic chrome dino game in Godot with GDScript. This is a learning project to help familiarize myself with game dev and expand my understanding of the Godot engine.
 
 - Created: 24-12-01
-- Status: Dev
-- Total Time: 15h 15m
+- Status: Polish/Publish
+- Total Time: 16h 45m
 
   ## TASKS
+- [ ] Publish
+	- Prepare Itch Assets
+	- Clean up project & code
+= [ ] Polish
+	- [ ] Add art assets
+	- [ ] Playtest and tune
+	- [ ] More obstacles as score increases
 - [x] Scope
 - [x] Player Dino
 	- [x] Player Jump
@@ -16,16 +23,19 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 		- [x] Create Standing/Walking Animation
 		- [x] Create Ducking/Walking Animation
 		- [x] State Manager for Dino Animation
-- [ ] Obstacles
+- [x] Obstacles
 	- [x] Large Rock
 	- [x] Small Rock
 	- [x] Tall Cactus
 	- [~] Difficulty Scaling + Random
-		- [ ] Dist scales w/ score too
+		- [x] Dist scales w/ score too
 	- [x] Pteradactyl
 		- [x] Base Sprite
 		- [x] Animations
-	- [ ] (OP) Snake Enemy
+	- [x] (OP) Snake Enemy
+		- [x] Snake Sprites
+		- [x] Animation
+		- [x] Behavior
 	- [x] Additional Obst
 - [x] Background 
   - [x] Base Background Sprite

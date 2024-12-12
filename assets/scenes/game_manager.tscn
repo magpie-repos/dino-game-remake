@@ -16,6 +16,7 @@ script = ExtResource("1_bdotx")
 
 [node name="Background" type="Sprite2D" parent="."]
 process_mode = 1
+z_index = -100
 texture = ExtResource("2_kq5de")
 centered = false
 script = ExtResource("3_xdxdc")
@@ -23,6 +24,11 @@ script = ExtResource("3_xdxdc")
 [node name="ObstSpawner" type="Node2D" parent="."]
 process_mode = 1
 script = ExtResource("2_3gmba")
+
+[node name="ObstSpawnTimer" type="Timer" parent="ObstSpawner"]
+process_mode = 1
+wait_time = 0.5
+autostart = true
 
 [node name="Dino" parent="." instance=ExtResource("2_vvw1i")]
 position = Vector2(60, 196)
@@ -164,4 +170,5 @@ stream = ExtResource("7_enc1o")
 stream = ExtResource("8_vqtyl")
 volume_db = -10.0
 
+[connection signal="timeout" from="ObstSpawner/ObstSpawnTimer" to="ObstSpawner" method="_on_obst_spawn_timer_timeout"]
 [connection signal="ded" from="Dino" to="." method="_on_dino_ded"]

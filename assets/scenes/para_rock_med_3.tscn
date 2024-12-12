@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://wpkqyjpbrnb7" path="res://assets/textures/para_rock_med.png" id="1_3hj1w"]
 
 [node name="ParaRockMed3" type="Sprite2D"]
+z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("1_3hj1w")
 offset = Vector2(0, -16)
