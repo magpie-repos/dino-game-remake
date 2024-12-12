@@ -7,9 +7,9 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 
   ## TASKS
 - [ ] Publish
-	- Prepare Itch Assets
-	- Clean up project & code
-= [ ] Polish
+	- [ ] Prepare Itch Assets
+	- [ ] Clean up project & code
+ - [ ] Polish
 	- [ ] Add art assets
 	- [ ] Playtest and tune
 	- [ ] More obstacles as score increases
@@ -27,7 +27,7 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 	- [x] Large Rock
 	- [x] Small Rock
 	- [x] Tall Cactus
-	- [~] Difficulty Scaling + Random
+	- [x] Difficulty Scaling + Random
 		- [x] Dist scales w/ score too
 	- [x] Pteradactyl
 		- [x] Base Sprite
