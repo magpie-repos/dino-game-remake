@@ -7,7 +7,7 @@ var score: int
 var hi_score: int
 var game_speed: float
 var global_base_speed: float = 400
-var game_speed_inc: float = 0.10
+var game_speed_inc: float = 0.06
 var score_increment: float = 0.20
 var score_time_cntr: float
 

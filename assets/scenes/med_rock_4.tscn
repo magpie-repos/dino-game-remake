@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cblugq30lx7cq"]
+
+[ext_resource type="Texture2D" uid="uid://dn58j8kxcpce6" path="res://assets/textures/rock_med_2.png" id="1_tedx6"]
+
+[node name="MedRock4" type="Sprite2D"]
+z_as_relative = false
+scale = Vector2(2, 2)
+texture = ExtResource("1_tedx6")
+offset = Vector2(0, -16)
+hframes = 3

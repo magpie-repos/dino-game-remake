@@ -5,7 +5,7 @@ var safe_spawn_margin: float = 50
 var floor: float = 228
 var diff_scale: int
 var min_spawn_time: float = 0.2
-var init_spawn_time: float = 1.35
+var init_spawn_time: float = 1.5
 var spawning_active: bool = false
 
 @onready var window_size: Vector2 = get_window().size
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			obst_array.pop_at(i)
 
 func add_obst() -> void:
-	if diff_scale >= 5 && randf() < 1 / float(diff_scale):
+	if diff_scale >= 2 && randf() < 1 / float(diff_scale):
 		var new_obst: Node2D = pt_scene.instantiate()
 		new_obst.position.x = window_size.x + safe_spawn_margin + (randf() * 64)
 		new_obst.position.y = floor - randi_range(1, 8) * 16
@@ -62,4 +62,3 @@ func _on_obst_spawn_timer_timeout() -> void:
 		if spawn_timer.wait_time < min_spawn_time || spawn_timer.wait_time > 5:
 			spawn_timer.wait_time = min_spawn_time / game_manager.game_speed
 		add_obst()
-		print(spawn_timer.time_left)

@@ -16,7 +16,10 @@ var far_mount_scenes: Array[PackedScene] = [
 var med_rock_scenes: Array[PackedScene] = [
 	preload("res://assets/scenes/para_rock_med_1.tscn"),
 	preload("res://assets/scenes//para_rock_med_2.tscn"),
-	preload("res://assets/scenes//para_rock_med_3.tscn")
+	preload("res://assets/scenes//para_rock_med_3.tscn"),
+	preload("res://assets/scenes/med_rock_4.tscn"),
+	preload("res://assets/scenes/med_rock_5.tscn"),
+	preload("res://assets/scenes/med_rock_6.tscn")
 ]
 
 var far_cloud_scenes: Array[PackedScene] = [
@@ -33,9 +36,8 @@ var far_cloud_array: Array[Sprite2D]
 var med_cloud_array: Array[Sprite2D]
 
 var num_far_mount: int = 16
-var num_med_rock: int = 5
-var num_far_cloud: int = 5
-var num_med_cloud: int = 1
+var num_med_rock: int = 4 
+var num_far_cloud: int = 3
 
 @onready var gm: GameManager = get_parent()
 @onready var win_size: Vector2 = get_window().size
@@ -59,7 +61,7 @@ func _ready() -> void:
 	##Med Rock Setup
 	for i in range(0, num_med_rock):
 		var new_rock: Node2D = spawn_rock()
-		new_rock.position.x = (randi_range(0, win_size.x) / num_med_rock) * (1 + i)
+		new_rock.position.x = randf_range(0.6, 1.4) * (((win_size.x + 128) / num_med_rock * i) - 64)
 		add_child(new_rock)
 		med_array.append(new_rock)
 

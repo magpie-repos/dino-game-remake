@@ -7,12 +7,11 @@ A remake of the classic chrome dino game in Godot with GDScript. This is a learn
 
   ## TASKS
 - [ ] Publish
-	- Prepare Itch Assets
-	- Clean up project & code
-= [ ] Polish
-	- [ ] Add art assets
-	- [ ] Playtest and tune
-	- [ ] More obstacles as score increases
+- [x] Polish
+	- [x] Add art assets
+		- [x] Med Background Rocks
+	- [x] Playtest and tune
+	- [ ] ~~More obstacles as score increases~~
 - [x] Scope
 - [x] Player Dino
 	- [x] Player Jump
