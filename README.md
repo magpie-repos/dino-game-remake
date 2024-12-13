@@ -2,22 +2,22 @@
 A remake of the classic chrome dino game in Godot with GDScript. This is a learning project to help familiarize myself with game dev and expand my understanding of the Godot engine.
 
 - Created: 24-12-01
-- Status: Polish/Publish
+- Status: Done
 - Total Time: 18h 45m
 
   ## TASKS
-- [ ] Publish
+- [x] Publish
 - [x] Polish
 	- [x] Add art assets
 		- [x] Med Background Rocks
 	- [x] Playtest and tune
-	- [ ] ~~More obstacles as score increases~~
-	- [ ] Prepare Itch Assets
-	- [ ] Clean up project & code
- - [ ] Polish
-	- [ ] Add art assets
-	- [ ] Playtest and tune
-	- [ ] More obstacles as score increases
+	- [x] ~~More obstacles as score increases~~
+	- [x] Prepare Itch Assets
+	- [x] Clean up project & code
+ - [x] Polish
+	- [x] Add art assets
+	- [x] Playtest and tune
+	- [x] More obstacles as score increases
 
 - [x] Scope
 - [x] Player Dino
